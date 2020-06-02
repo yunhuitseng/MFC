@@ -1,0 +1,18 @@
+void CMFCApplication5View::OnDraw(CDC* pDC)
+{
+CMFCApplication5Doc* pDoc = GetDocument();
+ASSERT_VALID(pDoc);
+if (!pDoc)
+return;
+
+CBrush aBrush;
+for (int j = 0; j < 16; j++) {
+for (int i = 0; i < 16; i++)
+{
+aBrush.CreateSolidBrush(RGB(j*15, i * 15, 255-10*i));
+CBrush*pOldBrush = pDC->SelectObject(&aBrush);
+pDC->Rectangle(i * 20, 10+20*j, i * 20 + 10, 20+20*j);
+aBrush.DeleteObject();
+}
+}
+}
